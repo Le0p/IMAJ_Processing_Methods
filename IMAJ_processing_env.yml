@@ -1,0 +1,13 @@
+name: IMAJ_processing_env
+channels:
+  - defaults
+  - conda-forge  # You may add other channels as needed
+
+dependencies:
+  - numpy
+  - matplotlib
+  - scikit-learn
+  - pillow
+  - scikit-image
+  - tqdm
+  - tensorflow

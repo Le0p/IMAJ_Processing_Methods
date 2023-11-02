@@ -79,6 +79,7 @@ filename = "images_info.txt"
 file = open(filename, 'w')
 file.write("Name; number of shapes; number of colors; \n")
 
+#%%
 # Create circle images
 for n in range(nb_images):
     # Create a blank image with a white background
@@ -182,7 +183,7 @@ for n in range(nb_images, nb_images*2):
     num_color = len(np.unique(circles_color_num))
     file.write(f"Test_images_{n}; {num_shapes}; {num_color}; \n")
 
-# Create band images
+# Create different size band images
 for n in range(nb_images*2, nb_images*3):
     image = Image.new("RGB", (width, height), "white")
     draw = ImageDraw.Draw(image)   
@@ -223,5 +224,45 @@ for n in range(nb_images*2, nb_images*3):
     
     num_color = len(np.unique(circles_color_num))
     file.write(f"Test_images_{n}; {num_shapes}; {num_color}; \n")
+
+#%%
+# Create same size band images
+for n in range(nb_images*3, nb_images*4):
+    image = Image.new("RGB", (width, height), "white")
+    draw = ImageDraw.Draw(image)   
     
+    circles_color = []
+    circles_color_num = []
+    
+    num_shapes = np.random.randint(5, 15)
+    radius = width/num_shapes
+    for i in range(num_shapes):
+        
+        x = int(round(i*radius))
+        
+        color_choice_flag = True
+        while color_choice_flag:
+            color_choice_num = np.random.randint(0, len(color_choice))
+            if i == 0 or circles_color_num[i-1] != color_choice_num:
+                color_choice_flag = False
+                
+        color = color_choice[color_choice_num]
+        circles_color.append(color)
+        circles_color_num.append(color_choice_num)
+            
+        draw.rectangle(
+            [(x, 0), (int(round(x + radius)), height)],
+            fill=color,
+            outline=None,
+        )
+        
+    
+    np_img = np.array(image)
+    image = Image.fromarray(np_img)
+    image.save(f"Test_images_{n}.png")
+    
+    num_color = len(np.unique(circles_color_num))
+    file.write(f"Test_images_{n}; {num_shapes}; {num_color}; \n")   
+
+
 file.close()

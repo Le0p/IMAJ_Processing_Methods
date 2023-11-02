@@ -1,0 +1,11 @@
+Name; number of shapes; number of colors; 
+Test_images_30; 13; 6; 
+Test_images_31; 11; 7; 
+Test_images_32; 10; 6; 
+Test_images_33; 11; 7; 
+Test_images_34; 11; 6; 
+Test_images_35; 8; 6; 
+Test_images_36; 13; 7; 
+Test_images_37; 10; 7; 
+Test_images_38; 7; 5; 
+Test_images_39; 10; 5; 
