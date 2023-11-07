@@ -9,7 +9,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 from sklearn.cluster import MeanShift, estimate_bandwidth
-import itertools
+import time
+
 
 def scatterplot_matrix(data, names=None):
     
@@ -41,8 +42,12 @@ pixels = image.reshape(-1, 3)
 
 # Apply Mean-Shift
 bandwidth = estimate_bandwidth(pixels, quantile=0.2, n_samples=500)
+
+start_time = time.time()
 ms = MeanShift(bandwidth=bandwidth)
-ms.fit(pixels)
+ms.fit(pixels[:20000])
+
+print("--- %s seconds ---" % (time.time() - start_time))
 
 cluster_centers = ms.cluster_centers_
 
