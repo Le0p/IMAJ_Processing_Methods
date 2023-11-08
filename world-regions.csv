@@ -3,9 +3,11 @@ Aaland Islands,ALA,19.952,60.198,,,Europe,Europe,,,,,,EUCOM,Åland Islands,Europ
 Afghanistan,AFG,65.216,33.677,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,South Asia,South Asia,Low income,IDA,,CENTCOM,Afghanistan,Asia,Southern Asia,S. Asia,,LDC LLDC 
 Albania,ALB,20.068,41.143,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Albania,Europe,Southern Europe,Southern Europe,,
 Algeria,DZA,2.632,28.163,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Middle East & North Africa,MENA,Upper middle income,IBRD,,AFRICOM,Algeria,Africa,Northern Africa,North Africa,,
+Algeria,ALG,2.632,28.163,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Middle East & North Africa,MENA,Upper middle income,IBRD,,AFRICOM,Algeria,Africa,Northern Africa,North Africa,,
 American Samoa,ASM,-170.73,-14.318,,,Oceana,Australia and the Pacific,East Asia & Pacific,East Asia & Pacific,Upper middle income,..,,INDOPACOM,American Samoa,Oceania,Polynesia,Polynesia,,SIDS
 Andorra,AND,1.576,42.549,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,,EUCOM,Andorra,Europe,Southern Europe,Southern Europe,,
 Angola,AGO,17.544,-12.296,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Lower middle income,IBRD,,AFRICOM,Angola,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Middle Africa,LDC 
+Angola,ANG,17.544,-12.296,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Lower middle income,IBRD,,AFRICOM,Angola,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Middle Africa,LDC 
 Anguilla,AIA,-63.032,18.237,,,North America,Middle and South America,,,,,,SOUTHCOM,Anguilla,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
 Antarctica,ATA,21.304,-80.446,Antarctica,Antarctica,Antarctica,,,,,,,,Antarctica,Antarctica,,Antarctica,,
 Antigua and Barbuda,ATG,-61.783,17.078,,,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,High income,IBRD,,SOUTHCOM,Antigua and Barbuda,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
@@ -18,8 +20,10 @@ Azerbaijan,AZE,47.395,40.43,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest
 Bahamas,BHS,-78.014,24.628,,,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,High income,..,,SOUTHCOM,Bahamas,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
 Bahrain,BHR,50.562,26.019,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Middle East & North Africa,MENA,High income,..,,CENTCOM,Bahrain,Asia,Western Asia,W. Asia,,
 Bangladesh,BGD,89.941,24.218,Afro-Eurasia,Eurasia,Asia,South Asia,South Asia,South Asia,Lower middle income,IDA,,INDOPACOM,Bangladesh,Asia,Southern Asia,S. Asia,,LDC 
+Bangladesh,BAN,89.941,24.218,Afro-Eurasia,Eurasia,Asia,South Asia,South Asia,South Asia,Lower middle income,IDA,,INDOPACOM,Bangladesh,Asia,Southern Asia,S. Asia,,LDC 
 Barbados,BRB,-59.559,13.153,,,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,High income,..,,SOUTHCOM,Barbados,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
 Belarus,BLR,28.047,53.54,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Belarus,Europe,Eastern Europe,Eastern Europe,,
+Belarus,BIE,28.047,53.54,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Belarus,Europe,Eastern Europe,Eastern Europe,,
 Belgium,BEL,4.664,50.643,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Belgium,Europe,Western Europe,Western Europe,,
 Belize,BLZ,-88.602,17.219,Americas,Americas,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,Upper middle income,IBRD,,SOUTHCOM,Belize,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Central America,SIDS
 Benin,BEN,2.469,10.541,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Benin,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC 
@@ -31,10 +35,12 @@ Bosnia and Herzegovina,BIH,17.786,44.169,Afro-Eurasia,Eurasia,Europe,Europe,Euro
 Botswana,BWA,23.815,-22.182,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Upper middle income,IBRD,,AFRICOM,Botswana,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Southern Africa,LLDC 
 Bouvet Island,BVT,3.412,-54.422,,,South America,Middle and South America,,,,,,SOUTHCOM,Bouvet Island,Americas,Latin America and the Caribbean,Latin America and the Caribbean,South America,
 Brazil,BRA,-53.089,-10.772,Americas,Americas,South America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,Upper middle income,IBRD,,SOUTHCOM,Brazil,Americas,Latin America and the Caribbean,Latin America and the Caribbean,South America,
+Brazil,BRE,-53.089,-10.772,Americas,Americas,South America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,Upper middle income,IBRD,,SOUTHCOM,Brazil,Americas,Latin America and the Caribbean,Latin America and the Caribbean,South America,
 British Indian Ocean Territory,IOT,72.416,-7.335,,,Africa,Sub-Saharan Africa,,,,,,AFRICOM,British Indian Ocean Territory,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,
 British Virgin Islands,VGB,-64.39,18.483,,,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,High income,..,,SOUTHCOM,British Virgin Islands,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
 Brunei Darussalam,BRN,114.591,4.468,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,,INDOPACOM,Brunei Darussalam,Asia,South-eastern Asia,Southeast Asia,,
 Bulgaria,BGR,25.231,42.761,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Bulgaria,Europe,Eastern Europe,Eastern Europe,,
+Bulgaria,BUL,25.231,42.761,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Bulgaria,Europe,Eastern Europe,Eastern Europe,,
 Burkina Faso,BFA,-1.74,12.278,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Burkina Faso,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC LLDC 
 Burma,MMR,96.041,21.718,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Lower middle income,IDA,,INDOPACOM,Myanmar,Asia,South-eastern Asia,Southeast Asia,,LDC 
 Burundi,BDI,29.887,-3.356,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Burundi,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC LLDC 
@@ -46,6 +52,7 @@ Cayman Islands,CYM,-81.198,19.314,,,North America,Middle and South America,Latin
 Central African Republic,CAF,20.483,6.571,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Central African Republic,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Middle Africa,LDC LLDC 
 Chad,TCD,18.665,15.361,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Chad,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Middle Africa,LDC LLDC 
 Chile,CHL,-69.433,-23.389,Americas,Americas,South America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,High income,IBRD,2010,SOUTHCOM,Chile,Americas,Latin America and the Caribbean,Latin America and the Caribbean,South America,
+Chile,CHI,-69.433,-23.389,Americas,Americas,South America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,High income,IBRD,2010,SOUTHCOM,Chile,Americas,Latin America and the Caribbean,Latin America and the Caribbean,South America,
 China,CHN,106.514,33.42,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Upper middle income,IBRD,,INDOPACOM,China,Asia,Eastern Asia,Eastern Asia,,
 Christmas Island,CXR,105.704,-10.444,,,Oceana,Australia and the Pacific,,,,,,INDOPACOM,Christmas Island,Oceania,Australia and New Zealand,Australia and New Zealand,,
 Cocos (Keeling) Islands,CCK,96.839,-12.173,,,Oceana,Australia and the Pacific,,,,,,INDOPACOM,Cocos (Keeling) Islands,Oceania,Australia and New Zealand,Australia and New Zealand,,
@@ -60,6 +67,7 @@ Cuba,CUB,-77.781,21.297,,,North America,Middle and South America,Latin America &
 Curaçao,CUW,,,,,,,,,,,,,Curaçao,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
 Cyprus,CYP,33.219,35.043,,,Asia,North Africa and Southwest Asia,Europe & Central Asia,Europe & Central Asia,High income,..,,EUCOM,Cyprus,Asia,Western Asia,W. Asia,,
 Czech Republic,CZE,15.338,49.743,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1995,EUCOM,Czechia,Europe,Eastern Europe,Eastern Europe,,
+Czech Republic,TCH,15.338,49.743,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1995,EUCOM,Czechia,Europe,Eastern Europe,Eastern Europe,,
 Democratic Republic of the Congo,COD,23.654,-2.876,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Democratic Republic of the Congo,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Middle Africa,LDC 
 Denmark,DNK,9.264,56.058,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Denmark,Europe,Northern Europe,Northern Europe,,
 Djibouti,DJI,42.516,11.9,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Middle East & North Africa,MENA,Lower middle income,IDA,,CENTCOM,Djibouti,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC 
@@ -84,6 +92,7 @@ Gabon,GAB,11.797,-0.591,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Sahara
 Gambia,GMB,-15.386,13.453,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Gambia,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC 
 Georgia,GEO,43.518,42.176,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Georgia,Asia,Western Asia,W. Asia,,
 Germany,DEU,9.851,51.11,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Germany,Europe,Western Europe,Western Europe,,
+Germany,GER,9.851,51.11,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Germany,Europe,Western Europe,Western Europe,,
 Ghana,GHA,-1.207,7.96,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Lower middle income,IDA,,AFRICOM,Ghana,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,
 Gibraltar,GIB,-5.345,36.138,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,,EUCOM,Gibraltar,Europe,Southern Europe,Southern Europe,,
 Greece,GRC,21.766,39.666,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Greece,Europe,Southern Europe,Southern Europe,,
@@ -100,12 +109,14 @@ Haiti,HTI,-72.278,19.142,,,North America,Middle and South America,Latin America 
 Heard Island and McDonald Islands,HMD,73.507,-53.111,,,Oceana,Australia and the Pacific,,,,,,INDOPACOM,Heard Island and McDonald Islands,Oceania,Australia and New Zealand,Australia and New Zealand,,
 Holy See (Vatican City),VAT,12.451,41.904,,,Europe,Europe,,,,,,EUCOM,Holy See,Europe,Southern Europe,Southern Europe,,
 Honduras,HND,-86.863,14.819,Americas,Americas,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,Lower middle income,IDA,,SOUTHCOM,Honduras,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Central America,
+Honduras,HON,-86.863,14.819,Americas,Americas,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,Lower middle income,IDA,,SOUTHCOM,Honduras,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Central America,
 Hong Kong,HKG,114.129,22.423,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,,INDOPACOM,"China, Hong Kong Special Administrative Region",Asia,Eastern Asia,Eastern Asia,,
 Hungary,HUN,19.134,47.07,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1996,EUCOM,Hungary,Europe,Eastern Europe,Eastern Europe,,
 Iceland,ISL,-18.48,64.764,,,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Iceland,Europe,Northern Europe,Northern Europe,,
 India,IND,79.619,22.881,Afro-Eurasia,Eurasia,Asia,South Asia,South Asia,South Asia,Lower middle income,IBRD,,INDOPACOM,India,Asia,Southern Asia,S. Asia,,
 Indonesia,IDN,114.252,-0.976,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Lower middle income,IBRD,,INDOPACOM,Indonesia,Asia,South-eastern Asia,Southeast Asia,,
 Iran (Islamic Republic of),IRN,54.301,32.565,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,Upper middle income,IBRD,,CENTCOM,Iran (Islamic Republic of),Asia,Southern Asia,S. Asia,,
+Iran (Islamic Republic of),IRA,54.301,32.565,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,Upper middle income,IBRD,,CENTCOM,Iran (Islamic Republic of),Asia,Southern Asia,S. Asia,,
 Iraq,IRQ,43.772,33.048,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,Upper middle income,IBRD,,CENTCOM,Iraq,Asia,Western Asia,W. Asia,,
 Ireland,IRL,-8.152,53.177,,,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Ireland,Europe,Northern Europe,Northern Europe,,
 Isle of Man,IMN,-4.527,54.229,,,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,,EUCOM,Isle of Man,Europe,Northern Europe,Northern Europe,,
@@ -120,22 +131,27 @@ Kenya,KEN,37.858,0.53,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan 
 Kiribati,KIR,175.036,-1.508,,,Oceana,Australia and the Pacific,East Asia & Pacific,East Asia & Pacific,Lower middle income,IDA,,INDOPACOM,Kiribati,Oceania,Micronesia,Micronesia,,LDC SIDS
 "Korea, Democratic People's Republic of",PRK,126.451,39.778,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Low income,..,,INDOPACOM,Democratic People's Republic of Korea,Asia,Eastern Asia,Eastern Asia,,
 "Korea, Republic of",KOR,128.103,36.504,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,1996,INDOPACOM,Republic of Korea,Asia,Eastern Asia,Eastern Asia,,
+"Korea, Republic of",COR,128.103,36.504,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,1996,INDOPACOM,Republic of Korea,Asia,Eastern Asia,Eastern Asia,,
 Kosovo,XKX,,,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IDA,,EUCOM,,,,,,
 Kuwait,KWT,47.376,29.476,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,High income,..,,CENTCOM,Kuwait,Asia,Western Asia,W. Asia,,
 Kyrgyzstan,KGZ,74.555,41.465,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Europe & Central Asia,Europe & Central Asia,Lower middle income,IDA,,CENTCOM,Kyrgyzstan,Asia,Central Asia,Central Asia,,LLDC 
 Lao People's Democratic Republic,LAO,102.471,19.905,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Lower middle income,IDA,,INDOPACOM,Lao People's Democratic Republic,Asia,South-eastern Asia,Southeast Asia,,LDC LLDC 
 Latvia,LVA,25.641,56.858,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2016,EUCOM,Latvia,Europe,Northern Europe,Northern Europe,,
+Latvia,LAT,25.641,56.858,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2016,EUCOM,Latvia,Europe,Northern Europe,Northern Europe,,
+Latvia,LAV,25.641,56.858,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2016,EUCOM,Latvia,Europe,Northern Europe,Northern Europe,,
 Lebanon,LBN,35.888,33.92,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,Upper middle income,IBRD,,CENTCOM,Lebanon,Asia,Western Asia,W. Asia,,
 Lesotho,LSO,28.243,-29.581,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Lower middle income,IDA,,AFRICOM,Lesotho,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Southern Africa,LDC LLDC 
 Liberia,LBR,-9.657,6.682,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Liberia,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC 
 Libyan Arab Jamahiriya,LBY,18.023,27.044,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Middle East & North Africa,MENA,Upper middle income,IBRD,,AFRICOM,Libya,Africa,Northern Africa,North Africa,,
 Liechtenstein,LIE,9.555,47.153,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,,EUCOM,Liechtenstein,Europe,Western Europe,Western Europe,,
 Lithuania,LTU,23.897,55.336,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2018,EUCOM,Lithuania,Europe,Northern Europe,Northern Europe,,
+Lithuania,LIT,23.897,55.336,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2018,EUCOM,Lithuania,Europe,Northern Europe,Northern Europe,,
 Luxembourg,LUX,6.088,49.771,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Luxembourg,Europe,Western Europe,Western Europe,,
 Macau,MAC,113.545,22.2,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,,INDOPACOM,"China, Macao Special Administrative Region",Asia,Eastern Asia,Eastern Asia,,
 Madagascar,MDG,46.706,-19.374,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Madagascar,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC 
 Malawi,MWI,33.808,-13.4,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Malawi,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC LLDC 
 Malaysia,MYS,102.195,4.201,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Upper middle income,IBRD,,INDOPACOM,Malaysia,Asia,South-eastern Asia,Southeast Asia,,
+Malaysia,MAL,102.195,4.201,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Upper middle income,IBRD,,INDOPACOM,Malaysia,Asia,South-eastern Asia,Southeast Asia,,
 Maldives,MDV,72.92,3.548,,,Asia,South Asia,South Asia,South Asia,Upper middle income,IDA,,INDOPACOM,Maldives,Asia,Southern Asia,S. Asia,,SIDS
 Mali,MLI,-3.524,17.35,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Mali,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC LLDC 
 Malta,MLT,14.442,35.89,,,Europe,North Africa and Southwest Asia,Middle East & North Africa,MENA,High income,..,,AFRICOM,Malta,Europe,Southern Europe,Southern Europe,,
@@ -147,6 +163,7 @@ Mayotte,MYT,45.155,-12.777,,,Africa,Sub-Saharan Africa,,,,,,AFRICOM,Mayotte,Afri
 Mexico,MEX,-102.535,23.951,Americas,Americas,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,Upper middle income,IBRD,1994,NORTHCOM,Mexico,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Central America,
 "Micronesia, Federated States of",FSM,158.235,6.883,,,Oceana,Australia and the Pacific,East Asia & Pacific,East Asia & Pacific,Lower middle income,IDA,,INDOPACOM,Micronesia (Federated States of),Oceania,Micronesia,Micronesia,,SIDS
 Monaco,MCO,7.412,43.75,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,,EUCOM,Monaco,Europe,Western Europe,Western Europe,,
+Monaco,MON,7.412,43.75,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,,EUCOM,Monaco,Europe,Western Europe,Western Europe,,
 Mongolia,MNG,102.876,46.056,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Lower middle income,Blend,,INDOPACOM,Mongolia,Asia,Eastern Asia,Eastern Asia,,LLDC 
 Montenegro,MNE,19.254,42.792,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Montenegro,Europe,Southern Europe,Southern Europe,,
 Montserrat,MSR,-62.187,16.736,,,North America,Middle and South America,,,,,,SOUTHCOM,Montserrat,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
@@ -178,11 +195,14 @@ Philippines,PHL,122.466,11.118,,,Asia,East and Southeast Asia,East Asia & Pacifi
 Pitcairn Islands,PCN,-128.316,-24.366,,,Oceana,Australia and the Pacific,,,,,,INDOPACOM,Pitcairn,Oceania,Polynesia,Polynesia,,
 Poland,POL,19.401,52.125,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,IBRD,1996,EUCOM,Poland,Europe,Eastern Europe,Eastern Europe,,
 Portugal,PRT,-8.058,40.309,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Portugal,Europe,Southern Europe,Southern Europe,,
+Portugal,POR,-8.058,40.309,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Portugal,Europe,Southern Europe,Southern Europe,,
 Puerto Rico,PRI,-66.466,18.221,,,North America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,High income,..,,SOUTHCOM,Puerto Rico,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
 Qatar,QAT,51.191,25.316,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,High income,..,,CENTCOM,Qatar,Asia,Western Asia,W. Asia,,
 Republic of Moldova,MDA,28.599,47.193,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Lower middle income,Blend,,EUCOM,Republic of Moldova,Europe,Eastern Europe,Eastern Europe,,LLDC 
+Republic of Moldova,MOL,28.599,47.193,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Lower middle income,Blend,,EUCOM,Republic of Moldova,Europe,Eastern Europe,Eastern Europe,,LLDC 
 Reunion,REU,55.538,-21.122,,,Africa,Sub-Saharan Africa,,,,,,AFRICOM,Réunion,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,
 Romania,ROU,24.969,45.844,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Romania,Europe,Eastern Europe,Eastern Europe,,
+Romania,ROM,24.969,45.844,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Romania,Europe,Eastern Europe,Eastern Europe,,
 Russia,RUS,96.689,61.988,Afro-Eurasia,Eurasia,Europe,Russia,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Russian Federation,Europe,Eastern Europe,Eastern Europe,,
 Rwanda,RWA,29.917,-1.998,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Rwanda,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC LLDC 
 Saint Barthelemy,BLM,-63.043,18.04,,,North America,Middle and South America,,,,,,SOUTHCOM,Saint Barthélemy,Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,
@@ -198,12 +218,17 @@ Sao Tome and Principe,STP,6.629,0.201,,,Africa,Sub-Saharan Africa,Sub-Saharan Af
 Saudi Arabia,SAU,44.585,24.023,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,High income,..,,CENTCOM,Saudi Arabia,Asia,Western Asia,W. Asia,,
 Senegal,SEN,-14.881,15.013,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Lower middle income,IDA,,AFRICOM,Senegal,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC 
 Serbia,SRB,20.806,44.032,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Serbia,Europe,Southern Europe,Southern Europe,,
+Serbia,SBR,20.806,44.032,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Serbia,Europe,Southern Europe,Southern Europe,,
+Serbia,SER,20.806,44.032,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,Serbia,Europe,Southern Europe,Southern Europe,,
 Seychelles,SYC,55.474,-4.647,,,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,High income,IBRD,,AFRICOM,Seychelles,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,SIDS
 Sierra Leone,SLE,-11.792,8.56,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Sierra Leone,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC 
 Singapore,SGP,103.808,1.351,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,,INDOPACOM,Singapore,Asia,South-eastern Asia,Southeast Asia,,SIDS
+Singapore,SIN,103.808,1.351,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,,INDOPACOM,Singapore,Asia,South-eastern Asia,Southeast Asia,,SIDS
 Sint Maarten (Dutch part),SXM,,,,,,,,,,,,,Sint Maarten (Dutch part),Americas,Latin America and the Caribbean,Latin America and the Caribbean,Caribbean,SIDS
 Slovakia,SVK,19.491,48.707,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2000,EUCOM,Slovakia,Europe,Eastern Europe,Eastern Europe,,
 Slovenia,SVN,14.827,46.124,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2010,EUCOM,Slovenia,Europe,Southern Europe,Southern Europe,,
+Slovenia,SNV,14.827,46.124,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2010,EUCOM,Slovenia,Europe,Southern Europe,Southern Europe,,
+Slovenia,SLO,14.827,46.124,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,2010,EUCOM,Slovenia,Europe,Southern Europe,Southern Europe,,
 Solomon Islands,SLB,160.109,-9.611,,,Oceana,Australia and the Pacific,East Asia & Pacific,East Asia & Pacific,Lower middle income,IDA,,INDOPACOM,Solomon Islands,Oceania,Melanesia,Melanesia,,LDC SIDS
 Somalia,SOM,48.316,9.774,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Somalia,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC 
 South Africa,ZAF,23.121,-30.558,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Upper middle income,IBRD,,AFRICOM,South Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Southern Africa,
@@ -211,6 +236,7 @@ South Georgia South Sandwich Islands,SGS,-36.891,-54.209,,,South America,Middle 
 South Sudan,SSD,,,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,South Sudan,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC LLDC 
 Spain,ESP,-3.649,40.227,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,Spain,Europe,Southern Europe,Southern Europe,,
 Sri Lanka,LKA,80.704,7.612,,,Asia,South Asia,South Asia,South Asia,Upper middle income,IBRD,,INDOPACOM,Sri Lanka,Asia,Southern Asia,S. Asia,,
+Sri Lanka,SRI,80.704,7.612,,,Asia,South Asia,South Asia,South Asia,Upper middle income,IBRD,,INDOPACOM,Sri Lanka,Asia,Southern Asia,S. Asia,,
 Sudan,SDN,30.05,13.832,Afro-Eurasia,Africa,Africa,North Africa and Southwest Asia,Sub-Saharan Africa,Sub-Saharan Africa,Lower middle income,IDA,,AFRICOM,Sudan,Africa,Northern Africa,North Africa,,LDC 
 Suriname,SUR,-55.912,4.127,,,South America,Middle and South America,Latin America & Caribbean,Latin America & Caribbean,Upper middle income,IBRD,,SOUTHCOM,Suriname,Americas,Latin America and the Caribbean,Latin America and the Caribbean,South America,SIDS
 Svalbard,SJM,18.374,78.83,,,Europe,Europe,,,,,,EUCOM,Svalbard and Jan Mayen Islands,Europe,Northern Europe,Northern Europe,,
@@ -221,6 +247,8 @@ Syrian Arab Republic,SYR,38.506,35.013,Afro-Eurasia,Eurasia,Asia,North Africa an
 Taiwan,TWN,120.946,23.754,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,High income,..,,INDOPACOM,,,,,,
 Tajikistan,TJK,69.42,38.665,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Europe & Central Asia,Europe & Central Asia,Low income,IDA,,CENTCOM,Tajikistan,Asia,Central Asia,Central Asia,,LLDC 
 Thailand,THA,100.844,15.7,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Upper middle income,IBRD,,INDOPACOM,Thailand,Asia,South-eastern Asia,Southeast Asia,,
+Thailand,TAI,100.844,15.7,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Upper middle income,IBRD,,INDOPACOM,Thailand,Asia,South-eastern Asia,Southeast Asia,,
+Thailand,THAI,100.844,15.7,Afro-Eurasia,Eurasia,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Upper middle income,IBRD,,INDOPACOM,Thailand,Asia,South-eastern Asia,Southeast Asia,,
 The former Yugoslav Republic of Macedonia,MKD,21.698,41.6,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Upper middle income,IBRD,,EUCOM,North Macedonia,Europe,Southern Europe,Southern Europe,,LLDC 
 Timor-Leste,TLS,125.878,-8.822,,,Asia,East and Southeast Asia,East Asia & Pacific,East Asia & Pacific,Lower middle income,Blend,,INDOPACOM,Timor-Leste,Asia,South-eastern Asia,Southeast Asia,,LDC SIDS
 Togo,TGO,1.081,8.799,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Togo,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Western Africa,LDC 
@@ -235,7 +263,9 @@ Tuvalu,TUV,179.219,-8.514,,,Oceana,Australia and the Pacific,East Asia & Pacific
 Uganda,UGA,32.386,1.28,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,Uganda,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC LLDC 
 Ukraine,UKR,31.388,49.016,Afro-Eurasia,Eurasia,Europe,Europe,Europe & Central Asia,Europe & Central Asia,Lower middle income,IBRD,,EUCOM,Ukraine,Europe,Eastern Europe,Eastern Europe,,
 United Arab Emirates,ARE,54.163,23.549,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,High income,..,,CENTCOM,United Arab Emirates,Asia,Western Asia,W. Asia,,
+United Arab Emirates,UAE,54.163,23.549,Afro-Eurasia,Eurasia,Asia,North Africa and Southwest Asia,Middle East & North Africa,MENA,High income,..,,CENTCOM,United Arab Emirates,Asia,Western Asia,W. Asia,,
 United Kingdom,GBR,-2.9,54.16,,,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,United Kingdom of Great Britain and Northern Ireland,Europe,Northern Europe,Northern Europe,,
+United Kingdom,UK,-2.9,54.16,,,Europe,Europe,Europe & Central Asia,Europe & Central Asia,High income,..,1961,EUCOM,United Kingdom of Great Britain and Northern Ireland,Europe,Northern Europe,Northern Europe,,
 United Republic of Tanzania,TZA,34.823,-6.27,Afro-Eurasia,Africa,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Sub-Saharan Africa,Low income,IDA,,AFRICOM,United Republic of Tanzania,Africa,Sub-Saharan Africa,Sub-Saharan Africa,Eastern Africa,LDC 
 United States,USA,-98.606,39.622,Americas,Americas,North America,North America,North America,North America,High income,..,1961,NORTHCOM,United States of America,Americas,Northern America,North America,,
 United States Minor Outlying Islands,UMI,-160.027,-0.385,,,Oceana,Australia and the Pacific,,,,,,INDOPACOM,United States Minor Outlying Islands,Oceania,Micronesia,Micronesia,,
