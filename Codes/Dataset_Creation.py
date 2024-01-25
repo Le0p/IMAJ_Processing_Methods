@@ -8,7 +8,7 @@ Created on Sat Nov  4 08:54:57 2023
 import pandas as pd
 import numpy as np
 
-def create_dataset(df, year_range, age_class_range, regions=None, n_samples=None, training_ratio=0.8, balanced=True):
+def create_dataset(df, year_range, age_class_range, regions=None, n_samples=None, training_ratio=0.8, balanced=True, shuffle=False):
     """
     Create a dataset from the image data DataFrame with optional filters and balancing.
 
@@ -66,6 +66,10 @@ def create_dataset(df, year_range, age_class_range, regions=None, n_samples=None
 
             train_list.extend(train_samples['Filename'].tolist())
             val_list.extend(val_samples['Filename'].tolist())
+            
+    if shuffle:
+        np.random.shuffle(train_list)
+        np.random.shuffle(val_list)
 
     return train_list, val_list
 

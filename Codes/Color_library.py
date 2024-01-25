@@ -8,7 +8,6 @@ Created on Wed Nov  1 12:32:00 2023
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics import mean_squared_error
-from tqdm import tqdm
 from skimage import color
 
 def quantized_colors_with_Kmeans(pixels, pixel_type, image, num_colors_max, pixels_HSV = None):
@@ -19,7 +18,7 @@ def quantized_colors_with_Kmeans(pixels, pixel_type, image, num_colors_max, pixe
     nmse_RGB_tab = []
     nmse_HSV_tab = []
 
-    for num_colors in tqdm(range(1, num_colors_max)):
+    for num_colors in range(1, num_colors_max):
 
         # Perform K-means clustering
         kmeans = KMeans(n_clusters=num_colors, random_state=0, n_init='auto')
@@ -47,11 +46,6 @@ def quantized_colors_with_Kmeans(pixels, pixel_type, image, num_colors_max, pixe
     nmse_tab.append(nmse_RGB_tab)
     if pixel_type == 'HSV':
         nmse_tab.append(nmse_HSV_tab)
-        
-    #display_images(image, quantized_images_tab, num_colors_max) 
-    #error_plot(nmse_RGB_tab, num_colors_max, "RGB space")
-    #if pixel_type == 'HSV':
-    #    error_plot(nmse_HSV_tab, num_colors_max, "HSV space")
     
     return quantized_images_tab, quantized_colors_tab, nmse_tab
 
@@ -76,3 +70,38 @@ def find_optimal_color_number(error_tab):
     number_colors = i + 1 - same_value_count
     
     return number_colors
+
+def extract_KMeans_colors_features(image):
+    
+    # Vecteur features -> nb classes, 3 couleurs dominantes (RGB) 
+    # + %remplissage essayé avec HSV aussi
+    
+    num_colors_max = 15
+    
+    #Convert to hsv
+    hsv_image = color.rgb2hsv(image)
+    
+    # Reshape the image to a 2D array of pixels
+    pixels = image.reshape(-1, 3)
+    hsv_pixels = hsv_image.reshape(-1, 3)
+    
+    HSV_images, HSV_colors, HSV_error_tab = quantized_colors_with_Kmeans(pixels, 'HSV', image, num_colors_max, hsv_pixels)
+
+    opt_num_color = find_optimal_color_number(HSV_error_tab[0])
+    
+    image_features = [opt_num_color]
+    
+    color_perc = []
+    for color_i in HSV_colors[opt_num_color - 1]:
+        color_perc.append(np.sum(np.sum(HSV_images[opt_num_color - 1] == color_i, axis=2) != 0)/len(pixels))
+        
+    color_sort = np.argsort(color_perc)
+    
+    for i in range(3):
+        j = color_sort[-i-1]
+        image_features.append(HSV_colors[opt_num_color - 1][j][0])
+        image_features.append(HSV_colors[opt_num_color - 1][j][1])
+        image_features.append(HSV_colors[opt_num_color - 1][j][2])
+        image_features.append(np.sum(np.sum(HSV_images[opt_num_color - 1] == HSV_colors[opt_num_color - 1][j], axis=2) != 0)/len(pixels))
+    
+    return image_features

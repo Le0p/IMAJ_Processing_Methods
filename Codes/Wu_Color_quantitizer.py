@@ -7,55 +7,68 @@ Created on Fri Oct 13 10:40:57 2023
 
 
 import numpy as np
+import os
+import pandas as pd
 from PIL import Image
+import matplotlib.pyplot as plt
+from skimage import io
+from sklearn.metrics import mean_squared_error
+from tqdm import tqdm
 
 MAXCOLOR = 256
 RED = 2
 GREEN = 1
 BLUE = 0
 
-class Box:
-    def __init__(self):
-        self.r0 = 0
-        self.r1 = 32
-        self.g0 = 0
-        self.g1 = 32
-        self.b0 = 0
-        self.b1 = 32
-        self.vol = 0
+def create_box(r0, r1, g0, g1, b0, b1):
+    return {
+        'r0': r0,
+        'r1': r1,
+        'g0': g0,
+        'g1': g1,
+        'b0': b0,
+        'b1': b1,
+        'vol': (r1 - r0) * (g1 - g0) * (b1 - b0)
+    }
 
-def Hist3d(vwt, vmr, vmg, vmb, m2, Ir, Ig, Ib):
-    table = [i ** 2 for i in range(256)]
-    Qadd = np.zeros((size,3), dtype=np.uint16)
+
+def hist3d(Ir, Ig, Ib, size):
+    vwt = np.zeros((33, 33, 33))
+    vmr = np.zeros((33, 33, 33))
+    vmg = np.zeros((33, 33, 33))
+    vmb = np.zeros((33, 33, 33))
+    m2 = np.zeros((33, 33, 33))
+    table = [i**2 for i in range(256)]
+    Qadd = np.zeros(size, dtype=np.uint16)
+
     for i in range(size):
         r, g, b = Ir[i], Ig[i], Ib[i]
-        inr = (r >> 3) + 1
-        ing = (g >> 3) + 1
-        inb = (b >> 3) + 1
-        Qadd[i] = [inr, ing, inb]
+        inr, ing, inb = (r >> 3) + 1, (g >> 3) + 1, (b >> 3) + 1
+        ind = (inr << 10) + (inr << 6) + inr + (ing << 5) + ing + inb
+        Qadd[i] = ind
         vwt[inr][ing][inb] += 1
         vmr[inr][ing][inb] += r
         vmg[inr][ing][inb] += g
         vmb[inr][ing][inb] += b
-        m2[inr][ing][inb] += (table[r] + table[g] + table[b])
-        
+        m2[inr][ing][inb] += table[r] + table[g] + table[b]
+
     return vwt, vmr, vmg, vmb, m2, Qadd
 
-def M3d(vwt, vmr, vmg, vmb, m2):
-    area = np.zeros(33, dtype=np.int64)
-    area_r = np.zeros(33, dtype=np.int64)
-    area_g = np.zeros(33, dtype=np.int64)
-    area_b = np.zeros(33, dtype=np.int64)
-    area2 = np.zeros(33, dtype=np.float32)
-
+def m3d(vwt, vmr, vmg, vmb, m2):
     for r in range(1, 33):
-        for i in range(33):
-            area[i] = area_r[i] = area_g[i] = area_b[i] = 0
+        area = np.zeros(33)
+        area_r = np.zeros(33)
+        area_g = np.zeros(33)
+        area_b = np.zeros(33)
+        area2 = np.zeros(33)
 
         for g in range(1, 33):
-            line2 = line = line_r = line_g = line_b = 0
+            line = line_r = line_g = line_b = 0
+            line2 = 0.0
 
             for b in range(1, 33):
+                #ind1 = (r << 10) + (r << 6) + r + (g << 5) + g + b
+
                 line += vwt[r][g][b]
                 line_r += vmr[r][g][b]
                 line_g += vmg[r][g][b]
@@ -68,112 +81,88 @@ def M3d(vwt, vmr, vmg, vmb, m2):
                 area_b[b] += line_b
                 area2[b] += line2
 
+                #ind2 = ind1 - 1089  # [r-1][g][b]
+
                 vwt[r][g][b] = vwt[r-1][g][b] + area[b]
                 vmr[r][g][b] = vmr[r-1][g][b] + area_r[b]
                 vmg[r][g][b] = vmg[r-1][g][b] + area_g[b]
                 vmb[r][g][b] = vmb[r-1][g][b] + area_b[b]
                 m2[r][g][b] = m2[r-1][g][b] + area2[b]
+                
     return vwt, vmr, vmg, vmb, m2
 
-def Vol(cube, mmt):
-    print(cube.r1)
-    return (
-        mmt[cube.r1][cube.g1][cube.b1]
-        - mmt[cube.r1][cube.g1][cube.b0]
-        - mmt[cube.r1][cube.g0][cube.b1]
-        + mmt[cube.r1][cube.g0][cube.b0]
-        - mmt[cube.r0][cube.g1][cube.b1]
-        + mmt[cube.r0][cube.g1][cube.b0]
-        + mmt[cube.r0][cube.g0][cube.b1]
-        - mmt[cube.r0][cube.g0][cube.b0]
-    )
+def vol(cube, mmt):
+    return (mmt[cube['r1'], cube['g1'], cube['b1']]
+            - mmt[cube['r1'], cube['g1'], cube['b0']]
+            - mmt[cube['r1'], cube['g0'], cube['b1']]
+            + mmt[cube['r1'], cube['g0'], cube['b0']]
+            - mmt[cube['r0'], cube['g1'], cube['b1']]
+            + mmt[cube['r0'], cube['g1'], cube['b0']]
+            + mmt[cube['r0'], cube['g0'], cube['b1']]
+            - mmt[cube['r0'], cube['g0'], cube['b0']])
 
-def Bottom(cube, dir, mmt):
+
+def bottom(cube, dir, mmt):
     if dir == RED:
-        return (
-            -mmt[cube.r0][cube.g1][cube.b1]
-            + mmt[cube.r0][cube.g1][cube.b0]
-            + mmt[cube.r0][cube.g0][cube.b1]
-            - mmt[cube.r0][cube.g0][cube.b0]
-        )
+        return (-mmt[cube['r0'], cube['g1'], cube['b1']]
+                + mmt[cube['r0'], cube['g1'], cube['b0']]
+                + mmt[cube['r0'], cube['g0'], cube['b1']]
+                - mmt[cube['r0'], cube['g0'], cube['b0']])
     elif dir == GREEN:
-        return (
-            -mmt[cube.r1][cube.g0][cube.b1]
-            + mmt[cube.r1][cube.g0][cube.b0]
-            + mmt[cube.r0][cube.g0][cube.b1]
-            - mmt[cube.r0][cube.g0][cube.b0]
-        )
+        return (-mmt[cube['r1'], cube['g0'], cube['b1']]
+                + mmt[cube['r1'], cube['g0'], cube['b0']]
+                + mmt[cube['r0'], cube['g0'], cube['b1']]
+                - mmt[cube['r0'], cube['g0'], cube['b0']])
     elif dir == BLUE:
-        return (
-            -mmt[cube.r1][cube.g1][cube.b0]
-            + mmt[cube.r1][cube.g0][cube.b0]
-            + mmt[cube.r0][cube.g1][cube.b0]
-            - mmt[cube.r0][cube.g0][cube.b0]
-        )
+        return (-mmt[cube['r1'], cube['g1'], cube['b0']]
+                + mmt[cube['r1'], cube['g0'], cube['b0']]
+                + mmt[cube['r0'], cube['g1'], cube['b0']]
+                - mmt[cube['r0'], cube['g0'], cube['b0']])
 
-def Top(cube, dir, pos, mmt):
+
+def top(cube, dir, pos, mmt):
     if dir == RED:
-        return (
-            mmt[pos][cube.g1][cube.b1]
-            - mmt[pos][cube.g1][cube.b0]
-            - mmt[pos][cube.g0][cube.b1]
-            + mmt[pos][cube.g0][cube.b0]
-        )
+        return (mmt[pos, cube['g1'], cube['b1']]
+                - mmt[pos, cube['g1'], cube['b0']]
+                - mmt[pos, cube['g0'], cube['b1']]
+                + mmt[pos, cube['g0'], cube['b0']])
     elif dir == GREEN:
-        return (
-            mmt[cube.r1][pos][cube.b1]
-            - mmt[cube.r1][pos][cube.b0]
-            - mmt[cube.r0][pos][cube.b1]
-            + mmt[cube.r0][pos][cube.b0]
-        )
+        return (mmt[cube['r1'], pos, cube['b1']]
+                - mmt[cube['r1'], pos, cube['b0']]
+                - mmt[cube['r0'], pos, cube['b1']]
+                + mmt[cube['r0'], pos, cube['b0']])
     elif dir == BLUE:
-        return (
-            mmt[cube.r1][cube.g1][pos]
-            - mmt[cube.r1][cube.g0][pos]
-            - mmt[cube.r0][cube.g1][pos]
-            + mmt[cube.r0][cube.g0][pos]
-        )
+        return (mmt[cube['r1'], cube['g1'], pos]
+                - mmt[cube['r1'], cube['g0'], pos]
+                - mmt[cube['r0'], cube['g1'], pos]
+                + mmt[cube['r0'], cube['g0'], pos])
 
-def Var(cube):
-    print(cube)
-    print(mr)
-    dr = Vol(cube, mr)
-    dg = Vol(cube, mg)
-    db = Vol(cube, mb)
-    xx = (
-        m2[cube.r1][cube.g1][cube.b1]
-        - m2[cube.r1][cube.g1][cube.b0]
-        - m2[cube.r1][cube.g0][cube.b1]
-        + m2[cube.r1][cube.g0][cube.b0]
-        - m2[cube.r0][cube.g1][cube.b1]
-        + m2[cube.r0][cube.g1][cube.b0]
-        + m2[cube.r0][cube.g0][cube.b1]
-        - m2[cube.r0][cube.g0][cube.b0]
-    )
+def var(cube, mr, mg, mb, m2, wt):
+    dr = vol(cube, mr)
+    dg = vol(cube, mg)
+    db = vol(cube, mb)
+    xx = vol(cube, m2)
+    return xx - (dr**2 + dg**2 + db**2) / vol(cube, wt)
 
-    return xx - (dr * dr + dg * dg + db * db) / Vol(cube, wt)
 
-def Maximize(cube, dir, first, last, cut, whole_r, whole_g, whole_b, whole_w):
-    base_r = Bottom(cube, dir, mr)
-    base_g = Bottom(cube, dir, mg)
-    base_b = Bottom(cube, dir, mb)
-    base_w = Bottom(cube, dir, wt)
-    max_val = 0.0
-    cut_val = -1
+def maximize(cube, dir, first, last, whole_r, whole_g, whole_b, whole_w, mr, mg, mb, wt):
+    max_value = 0.0
+    cut = -1
+    base_r = bottom(cube, dir, mr)
+    base_g = bottom(cube, dir, mg)
+    base_b = bottom(cube, dir, mb)
+    base_w = bottom(cube, dir, wt)
 
     for i in range(first, last):
-        half_r = base_r + Top(cube, dir, i, mr)
-        half_g = base_g + Top(cube, dir, i, mg)
-        half_b = base_b + Top(cube, dir, i, mb)
-        half_w = base_w + Top(cube, dir, i, wt)
+        half_r = base_r + top(cube, dir, i, mr)
+        half_g = base_g + top(cube, dir, i, mg)
+        half_b = base_b + top(cube, dir, i, mb)
+        half_w = base_w + top(cube, dir, i, wt)
 
         if half_w == 0:
-            continue
-        else:
-            temp = (
-                (half_r * half_r + half_g * half_g + half_b * half_b)
-                / half_w
-            )
+            continue  # Avoid division by zero; can't split into an empty box
+
+        temp = ((float(half_r)**2 + float(half_g)**2 + float(half_b)**2) / half_w)
 
         half_r = whole_r - half_r
         half_g = whole_g - half_g
@@ -181,158 +170,357 @@ def Maximize(cube, dir, first, last, cut, whole_r, whole_g, whole_b, whole_w):
         half_w = whole_w - half_w
 
         if half_w == 0:
-            continue
-        else:
-            temp += (
-                (half_r * half_r + half_g * half_g + half_b * half_b)
-                / half_w
-            )
+            continue  # Avoid division by zero; can't split into an empty box
 
-        if temp > max_val:
-            max_val = temp
-            cut_val = i
+        temp += ((float(half_r)**2 + float(half_g)**2 + float(half_b)**2) / half_w)
 
-    cut[0] = cut_val
-    return max_val
+        if temp > max_value:
+            max_value = temp
+            cut = i
 
-def Cut(set1, set2):
-    whole_r = Vol(set1, mr)
-    whole_g = Vol(set1, mg)
-    whole_b = Vol(set1, mb)
-    whole_w = Vol(set1, wt)
+    return max_value, cut
 
-    maxr = Maximize(set1, RED, set1.r0 + 1, set1.r1, [0], whole_r, whole_g, whole_b, whole_w)
-    maxg = Maximize(set1, GREEN, set1.g0 + 1, set1.g1, [0], whole_r, whole_g, whole_b, whole_w)
-    maxb = Maximize(set1, BLUE, set1.b0 + 1, set1.b1, [0], whole_r, whole_g, whole_b, whole_w)
 
+def cut(set1, mr, mg, mb, wt):
+    whole_r = vol(set1, mr)
+    whole_g = vol(set1, mg)
+    whole_b = vol(set1, mb)
+    whole_w = vol(set1, wt)
+
+    maxr, cutr = maximize(set1, RED, set1['r0'] + 1, set1['r1'], whole_r, whole_g, whole_b, whole_w, mr, mg, mb, wt)
+    maxg, cutg = maximize(set1, GREEN, set1['g0'] + 1, set1['g1'], whole_r, whole_g, whole_b, whole_w, mr, mg, mb, wt)
+    maxb, cutb = maximize(set1, BLUE, set1['b0'] + 1, set1['b1'], whole_r, whole_g, whole_b, whole_w, mr, mg, mb, wt)
+    
+    # Create a new box (set2) as a result of the cut
+    set2 = dict(set1)  # Create a copy of set1
+
+    # Determine the best direction to split the box
     if maxr >= maxg and maxr >= maxb:
+        if cutr < 0: return False, set1, set2  # No cut possible
         dir = RED
-        if maxr < 0:
-            return 0
+        cut = cutr
     elif maxg >= maxr and maxg >= maxb:
         dir = GREEN
+        cut = cutg
     else:
         dir = BLUE
-
-    set2.r1 = set1.r1
-    set2.g1 = set1.g1
-    set2.b1 = set1.b1
+        cut = cutb
 
     if dir == RED:
-        set2.r0 = set1.r1 = maxr
-        set2.g0 = set1.g0
-        set2.b0 = set1.b0
+        set1['r1'] = cut
+        set2['r0'] = cut
     elif dir == GREEN:
-        set2.g0 = set1.g1 = maxg
-        set2.r0 = set1.r0
-        set2.b0 = set1.b0
+        set1['g1'] = cut
+        set2['g0'] = cut
     else:
-        set2.b0 = set1.b1 = maxb
-        set2.r0 = set1.r0
-        set2.g0 = set1.g0
+        set1['b1'] = cut
+        set2['b0'] = cut
 
-    set1.vol = (set1.r1 - set1.r0) * (set1.g1 - set1.g0) * (set1.b1 - set1.b0)
-    set2.vol = (set2.r1 - set2.r0) * (set2.g1 - set2.g0) * (set2.b1 - set2.b0)
-    return 1
+    # Recalculate the volume of the boxes after the cut
+    set1['vol'] = (set1['r1'] - set1['r0']) * (set1['g1'] - set1['g0']) * (set1['b1'] - set1['b0'])
+    set2['vol'] = (set2['r1'] - set2['r0']) * (set2['g1'] - set2['g0']) * (set2['b1'] - set2['b0'])
 
-def Mark(cube, label, tag):
-    for r in range(cube.r0 + 1, cube.r1):
-        for g in range(cube.g0 + 1, cube.g1):
-            for b in range(cube.b0 + 1, cube.b1):
-                tag[(r << 10) + (r << 6) + r + (g << 5) + g + b] = label
+    return True, set1, set2
 
 
+def mark(cube, label, tag):
+    for r in range(cube['r0'] + 1, cube['r1'] + 1):
+        for g in range(cube['g0'] + 1, cube['g1'] + 1):
+            for b in range(cube['b0'] + 1, cube['b1'] + 1):
+                ind = (r << 10) + (r << 6) + r + (g << 5) + g + b
+                tag[ind] = label
 
 
-
-
-
-
-
-
-
-
-# Parameters
-image_path = 'img_Test.png'
-num_colors_max = 10
-
-# Load the image
-image = np.array(Image.open(image_path))
-
-# Input R, G, B components into Ir, Ig, Ib (assuming you have those arrays)
-Ir = image[:,:, RED].reshape(-1)
-Ig = image[:,:, GREEN].reshape(-1)
-Ib = image[:,:, BLUE].reshape(-1)
-size = len(Ir)
-
-
-K = int(input("no. of colors: "))
-wt = np.zeros((33, 33, 33), dtype=np.int64)
-mr = np.zeros((33, 33, 33), dtype=np.int64)
-mg = np.zeros((33, 33, 33), dtype=np.int64)
-mb = np.zeros((33, 33, 33), dtype=np.int64)
-m2 = np.zeros((33, 33, 33), dtype=np.float32)
-
-wt, mr, mg, mb, m2, Qadd = Hist3d(wt, mr, mg, mb, m2, Ir, Ig, Ib)
-print("Histogram done")
-
-Ig, Ib, Ir = None, None, None  # Ir, Ig, Ib should be arrays with your image data
-
-wt, mr, mg, mb, m2 = M3d(wt, mr, mg, mb, m2)
-print("Moments done");
-
-cube = [Box() for _ in range(MAXCOLOR)]
-lut_r = np.zeros(MAXCOLOR, dtype=np.uint8)
-lut_g = np.zeros(MAXCOLOR, dtype=np.uint8)
-lut_b = np.zeros(MAXCOLOR, dtype=np.uint8)
-tag = np.zeros(33 * 33 * 33, dtype=np.uint8)
-vv = np.zeros(MAXCOLOR, dtype=np.float32)
-
-next = 0
-for i in range(1,K):
-    print(cube[next].r1)
-    if Cut(cube[next], cube[i]):
-        if(cube[next].vol>1):
-            print(cube[next].r1)
-            vv[next] = Var(cube[next])
-        else:
-            vv[next] = 0.0
-        
-        if(cube[i].vol>1):
-            vv[i] = Var(cube[i])
-        else:
-            vv[i] = 0.0
-    else:
-        vv[next]=0.0
-        i-=1
+def wu_quantizer_algorithm(img, num_colors):
     
+    size = img.shape[0] * img.shape[1]
+
+    Ir = img[:, :, 0].flatten()
+    Ig = img[:, :, 1].flatten()
+    Ib = img[:, :, 2].flatten()
+
+    # Initialize arrays for histogram and moments
+    wt = np.zeros((33, 33, 33), dtype=np.int64)
+    mr = np.zeros((33, 33, 33), dtype=np.int64)
+    mg = np.zeros((33, 33, 33), dtype=np.int64)
+    mb = np.zeros((33, 33, 33), dtype=np.int64)
+    m2 = np.zeros((33, 33, 33), dtype=np.float64)
+
+    # Build 3D color histogram and compute moments
+    wt, mr, mg, mb, m2, Qadd = hist3d(Ir, Ig, Ib, size)
+    wt, mr, mg, mb, m2 = m3d(wt, mr, mg, mb, m2)
+
+    # Partition the color space
+    cube = [create_box(0, 32, 0, 32, 0, 32)]*MAXCOLOR
     next = 0
-    temp = vv[0]
-    
-    for k in range(1,K):
-        if vv[k] > temp:
-            temp = vv[k]
-            next = k
-    
-    if temp <= 0.0:
-        K=i+1
-        print(f"Only got {K} boxes\n")
-        break
-    
-print("Partition Done")   
-    
-#%%   
-for k in range(1,K):
-    Mark(cube[k], k, tag)
-    weight = Vol(cube[k], wt)
-    if weight:
-        lut_r[k] = Vol(cube[k], mr) // weight
-        lut_g[k] = Vol(cube[k], mg) // weight
-        lut_b[k] = Vol(cube[k], mb) // weight
-    else:
-        print(f"bogus box {k}")
-        lut_r[k] = lut_g[k] = lut_b[k] = 0
+    for i in range(1, num_colors):
+        if cube[next]['vol'] < 1:
+            break
 
-#%%
-for i in range(size):
-    Qadd[i] = tag[Qadd[i]]
+        cut_flag, set1, set2 = cut(cube[next], mr, mg, mb, wt)
+        if cut_flag:
+            cube[next] = set1
+            cube[i] = set2
+
+        # Find the next box to split
+        next = 0
+        for j in range(1, i + 1):
+            if cube[j]['vol'] > cube[next]['vol']:
+                next = j
+
+    # Generate lookup tables (LUTs) for each color box
+    lut_r = np.zeros(num_colors, dtype=np.uint8)
+    lut_g = np.zeros(num_colors, dtype=np.uint8)
+    lut_b = np.zeros(num_colors, dtype=np.uint8)
+    tag = np.zeros(33*33*33, dtype=np.uint8)
+
+    for k, box in enumerate(cube[:num_colors]):
+        mark(box, k, tag)
+        weight = vol(box, wt)
+        if weight:
+            lut_r[k] = vol(box, mr) // weight
+            lut_g[k] = vol(box, mg) // weight
+            lut_b[k] = vol(box, mb) // weight
+
+    # Map original image pixels to quantized colors using LUTs
+    quantized_img_data = np.zeros_like(img)
+    for i in range(size):
+        inr, ing, inb = (Ir[i] >> 3) + 1, (Ig[i] >> 3) + 1, (Ib[i] >> 3) + 1
+        index = tag[(inr << 10) + (inr << 6) + inr + (ing << 5) + ing + inb]
+        quantized_img_data[i // img.shape[1], i % img.shape[1], :] = [lut_r[index], lut_g[index], lut_b[index]]
+
+    quantized_image = Image.fromarray(quantized_img_data, 'RGB')
+    
+    # Combine them into a single lookup table
+    lut = np.array(list(zip(lut_r, lut_g, lut_b)))
+    
+    return np.array(quantized_image), lut
+
+def extract_wu_colors_features(image):
+    
+    num_colors_max = 256
+    
+    num_colors_tab = []
+    nmse_tab = []
+    colors_tab = []
+    images_tab = []
+    
+    step_size = 1  # Starting step size
+    early_stopping_threshold = 0.01  # Threshold for early stopping
+    nmse_prev = 0
+    
+    i = 0
+    nmse = 0
+    
+    while nmse < 0.99 and i < num_colors_max:
+
+        if abs(nmse - nmse_prev) < early_stopping_threshold:
+            early_stopping_threshold *= 0.1
+            step_size = step_size*2
+            #print("Increasing step size")
+        elif nmse > 0.98 and step_size > 1:
+            step_size = step_size//2
+            #print("Reducing step size")
+            
+        i = i + step_size
+        
+        if i > num_colors_max:
+            i = num_colors_max
+
+        quantized_image, color_tab = wu_quantizer_algorithm(image, i)
+        nmse = 1 - mean_squared_error(image.flatten(), quantized_image.flatten()) / np.var(image.flatten())
+        
+        num_colors_tab.append(i)
+        nmse_tab.append(nmse)
+        colors_tab.append(color_tab)
+        images_tab.append(quantized_image)
+        nmse_prev = nmse
+    
+    optimal_index = -1
+    
+    if step_size > 1 and len(num_colors_tab) > 1:
+        if nmse > 0.99:
+            i_start = num_colors_tab[-2]
+            insert_index = -1
+            
+            while step_size != 1:
+                step_size //= 2
+                i = i_start + step_size   
+                
+                quantized_image, color_tab = wu_quantizer_algorithm(image, i)
+                nmse = 1 - mean_squared_error(image.flatten(), quantized_image.flatten()) / np.var(image.flatten())
+                
+                num_colors_tab.insert(insert_index, i)
+                nmse_tab.insert(insert_index, nmse)
+                colors_tab.insert(insert_index, color_tab)
+                images_tab.insert(insert_index, quantized_image)
+                
+                if nmse > 0.99:
+                    insert_index -= 1
+                else:
+                    i_start = i
+            
+            optimal_index = next(x for x, val in enumerate(nmse_tab) if val > 0.99)
+            
+        else:
+            optimal_index = len(num_colors_tab)-1
+            flag = True
+            while flag:
+                if abs(nmse_tab[optimal_index-1]-nmse_tab[optimal_index]) < 0.001:
+                    optimal_index -= 1
+                else:
+                    flag = False
+                    
+            if optimal_index == 0:
+                optimal_index += 1
+            
+            i_start = num_colors_tab[optimal_index - 1]
+            step_size = abs(num_colors_tab[optimal_index] - i_start)
+            insert_index = optimal_index
+            
+            
+            while step_size != 1:
+                step_size //= 2
+                i = i_start + step_size   
+                
+                quantized_image, color_tab = wu_quantizer_algorithm(image, i)
+                nmse = 1 - mean_squared_error(image.flatten(), quantized_image.flatten()) / np.var(image.flatten())
+                
+                diff1 = abs((nmse_tab[optimal_index - 1]-nmse)/(num_colors_tab[optimal_index - 1]-i))
+                if (num_colors_tab[optimal_index]-i) != 0:
+                    diff2 = abs((nmse_tab[optimal_index]-nmse)/(num_colors_tab[optimal_index]-i))
+                else:
+                    diff2 = 0
+                
+                num_colors_tab.insert(optimal_index, i)
+                nmse_tab.insert(optimal_index, nmse)
+                colors_tab.insert(optimal_index, color_tab)
+                images_tab.insert(optimal_index, quantized_image)
+                
+                if diff1 > diff2:
+                    i_start = i_start
+                else:
+                    i_start = i
+                    optimal_index += 1
+    
+    optimal_color_number = num_colors_tab[optimal_index]
+    
+    error_plot(nmse_tab, num_colors_tab, "RGB space")
+    
+    plt.figure(figsize=(15, 25))
+    plt.subplot(1, 2, 1)
+    plt.imshow(image)
+    plt.title('Original Image')
+    plt.subplot(1, 2, 2)
+    plt.imshow(quantized_image)
+    plt.title(f'Quantized Image ({optimal_color_number} Colors)')
+    plt.tight_layout()
+    plt.show()
+    
+    colors_features = [optimal_color_number]
+    
+    color_perc = []
+    for color_i in colors_tab[optimal_index]:
+        color_perc.append(np.sum(np.sum(images_tab[optimal_index] == color_i, axis=2) != 0)/(image.shape[0] * image.shape[1]))
+        
+    color_sort = np.argsort(color_perc)
+        
+    for i in range(3):
+        
+        if i == 2 and len(num_colors_tab) == 1:
+            colors_features.append(0)
+            colors_features.append(0)
+            colors_features.append(0)
+            colors_features.append(0.0)
+            break
+        
+        j = color_sort[-i-1]
+        colors_features.append(colors_tab[optimal_index][j][0])
+        colors_features.append(colors_tab[optimal_index][j][1])
+        colors_features.append(colors_tab[optimal_index][j][2])
+        colors_features.append(np.sum(np.sum(images_tab[optimal_index] == colors_tab[optimal_index][j], axis=2) != 0)/(image.shape[0] * image.shape[1]))
+
+    return colors_features
+
+def error_plot(error_tab, num_colors_tab, title=None):
+    
+    plt.figure(figsize=(10, 5))
+    plt.plot(num_colors_tab, error_tab)
+    plt.xlabel("Number of clusters")
+    plt.ylabel("MSE Error")
+    if title != None:
+        plt.title(title)
+    plt.show()
+    
+def display_images(image, quantized_images_tab, num_color_max):
+    
+    # Display the original and quantized images
+    plt.figure(figsize=(15, 25))
+    plt.subplot(num_colors_max//5, 5, 1)
+    plt.imshow(image)
+    plt.title('Original Image')
+
+    for num_colors in range(1, num_colors_max):        
+        plt.subplot(1, 2, num_colors+1)
+        plt.imshow(quantized_images_tab[num_colors-1])
+        plt.title(f'Quantized Image ({num_colors} Colors)')
+
+    plt.tight_layout()
+    plt.show()
+
+# Example of use
+
+# Function to find a file by name in a directory and its subdirectories
+def find_file(start_dir, filename):
+    for dirpath, dirnames, filenames in os.walk(start_dir):
+        if filename in filenames:
+            return os.path.join(dirpath, filename)
+        elif filename.replace(' ', '_') in filenames:
+            return os.path.join(dirpath, filename.replace(' ', '_'))
+    return None  # File not found
+
+folder_path = "C:/Users\Hp\Downloads\Images_IMAJ"
+
+# Load the DataFrame from the CSV file
+df = pd.read_csv("../Images/IMAJ_image_database_with_wu_color_features_v2.csv")
+
+nb_img = 0
+
+for index, sample in df.iterrows():
+    if not isinstance(sample['Wu Color Features'], str):
+        print(sample['Filename'])
+        nb_img+=1
+        
+        image_name = sample['Filename']
+        image_path = find_file(folder_path, image_name)
+        
+        img = Image.open(image_path)
+        img = img.convert('RGB')
+        img_data = np.array(img)
+        
+        wu_colors_features = extract_wu_colors_features(img_data[::4, ::4])
+        
+        df.loc[[index], 'Wu Color Features'] = pd.Series([wu_colors_features], index=df.index[[index]])
+        
+        if nb_img%100 == 0:
+            print(nb_img)
+            df.to_csv("../Images/IMAJ_image_database_with_wu_color_features_v3.csv", index=False)
+
+df.to_csv("../Images/IMAJ_image_database_with_wu_color_features_v3.csv", index=False)    
+"""
+random_samples = df.sample(n=1)
+
+for sample in random_samples.iloc():
+    print(sample)
+        
+    image_name = sample['Filename']
+    image_path = find_file(folder_path, image_name)
+    print(image_path)
+    # Load the image and extract R, G, B components
+    img = Image.open(image_path)
+    img = img.convert('RGB')
+    img_data = np.array(img)
+    
+    wu_colors_features = extract_wu_colors_features(img_data[::4, ::4])
+    
+    print(wu_colors_features)"""

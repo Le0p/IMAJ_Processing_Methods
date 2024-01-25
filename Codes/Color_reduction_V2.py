@@ -81,10 +81,10 @@ def quantized_colors_with_Kmeans(pixels, pixel_type, image, num_colors_max, pixe
     if pixel_type == 'HSV':
         nmse_tab.append(nmse_HSV_tab)
         
-    #display_images(image, quantized_images_tab, num_colors_max) 
-    #error_plot(nmse_RGB_tab, num_colors_max, "RGB space")
-    #if pixel_type == 'HSV':
-    #    error_plot(nmse_HSV_tab, num_colors_max, "HSV space")
+    display_images(image, quantized_images_tab, num_colors_max) 
+    error_plot(nmse_RGB_tab, num_colors_max, "RGB space")
+    if pixel_type == 'HSV':
+        error_plot(nmse_HSV_tab, num_colors_max, "HSV space")
     
     return quantized_images_tab, quantized_colors_tab, nmse_tab
 
@@ -123,7 +123,7 @@ with open(file_path + filename, 'r') as file:
 opt_num_color=[]
 goal_num_color=[]
 
-for i in range(0, 10):
+for i in range(0, 1):
     n = i+30
     imagename = f'Test_images_{n}'
     

@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 model = VGG16(weights='imagenet', include_top=False)
 
-img_path = "IMG_test.png"
+img_path = "../Images/IMG_Test.png"
 img = image.load_img(img_path, target_size=(224,224))
 plt.imshow(img)
 plt.show()
